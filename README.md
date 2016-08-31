@@ -6,7 +6,9 @@ Ever wondered what would happen if `react` and [choo][choo] got a baby?
 Welp, wonder no longer - here's the answer. Full on
 [choo](https://github.com/yoshuawuyts/choo) architecture on top of the tiny
 [preact](https://github.com/developit/preact) engine. No JSX, only template
-strings.
+strings. But you can use JSX if you want to. We even support almost all of the
+React ecosystem through
+[preact-compat](https://github.com/developit/preact-compat).
 
 🎉🎉🎉🎉
 
@@ -74,6 +76,9 @@ Start the app and render it on a root DOM node
 ## FAQ
 ### Should I use this?
 Maybe? If you've got no choice other than using `react` this might be useful.
+
+## How do I run react widgets in rooch?
+Use [preact-compat](https://github.com/developit/preact-compat)
 
 ### Why is the start function different from choo?
 That's the way `preact` rolls; no way around it. But it's close enough you
