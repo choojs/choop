@@ -68,7 +68,18 @@ on React and Facebook (chaotic) by extent - the humans, on the floor, doing the
 actual work are great.
 
 ## API
-Nah mate, you figure it out yourself.
+### app = rooch()
+Create a new instance
+
+### app.router(routes)
+Register routes on `rooch`. Nested arrays all the way down
+
+### app.model(model)
+Register a model on `rooch`. Similar to [choo
+models](https://github.com/yoshuawuyts/choo#models)
+
+### app.start(root)
+Start the app and render it on a root DOM node
 
 ## FAQ
 ### Should I use this?
