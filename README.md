@@ -5,9 +5,9 @@ Ever wondered what would happen if `react` and [choo][choo] got a baby?
 
 Welp, wonder no longer - here's the answer. Full on
 [choo](https://github.com/yoshuawuyts/choo) architecture on top of the tiny
-[preact](https://github.com/developit/preact) engine. No JSX, only template
-strings. But you can use JSX if you want to. We even support almost all of the
-React ecosystem through
+[preact](https://github.com/developit/preact) engine. My guess is it weighs
+about `7kb`. No JSX, only template strings. But you can use JSX if you want to.
+We even support almost all of the React ecosystem through
 [preact-compat](https://github.com/developit/preact-compat).
 
 🎉🎉🎉🎉
