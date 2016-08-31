@@ -1,7 +1,7 @@
 {
   "name": "rooch",
   "version": "1.0.0",
-  "description": "BY THE POWER OF MODULES",
+  "description": "Yosh presents: Choo x React",
   "main": "index.js",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --extra --no-dev",

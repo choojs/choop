@@ -1,6 +1,5 @@
 # rooch [![stability][0]][1]
-[![npm version][2]][3] [![build status][4]][5] [![test coverage][6]][7]
-[![downloads][8]][9] [![js-standard-style][10]][11]
+[![npm version][2]][3] [![downloads][8]][9] [![js-standard-style][10]][11]
 
 Ever wondered what would happen if `react` and `choo` got a baby?
 
