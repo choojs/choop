@@ -30,7 +30,7 @@ app.model({
   }
 })
 
-app.router(['/', (state, prev, next) => {
+app.router(['/', (state, prev, send) => {
   return html`
     <main>
       <h1>Title: ${state.title}</h1>
