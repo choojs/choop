@@ -21,7 +21,6 @@ create a modern dev environment that's nice to work in. Let the concoction
 simmer for 2 minutes, stir once. And voila, `rooch` :zap:
 
 ```js
-const mount = require('rooch/mount')
 const html = require('rooch/html')
 const rooch = require('rooch')
 
@@ -45,7 +44,7 @@ app.router(['/', (state, prev, next) => {
   `
 ]})
 
-app(document.body)
+app.start(document.body)
 ```
 How to run it? Save it to `index.js` and then:
 ```js
