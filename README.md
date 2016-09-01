@@ -39,7 +39,7 @@ app.router(['/', (state, prev, send) => {
         oninput=${(e) => send('update', e.target.value)}>
     </main>
   `
-]})
+}])
 
 app.start(document.body)
 ```
