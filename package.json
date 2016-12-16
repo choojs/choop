@@ -23,7 +23,7 @@
     "barracks": "^8.2.1",
     "hyperx": "^2.0.4",
     "nanoraf": "^2.1.1",
-    "preact": "^5.7.0",
+    "preact": "^7.1.0",
     "sheet-router": "4.0.0-0",
     "xtend": "^4.0.1",
     "yo-yo": "^1.2.2"
