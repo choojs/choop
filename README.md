@@ -39,7 +39,7 @@
 
 <br/>
 
-Ever wondered what would happen if `react` and [choo][choo] got a baby?
+Ever wondered what would happen if `react` and [choo](https://github.com/yoshuawuyts/choo) got a baby?
 
 Welp, wonder no longer - here's the answer. Full on [choo](https://github.com/yoshuawuyts/choo) architecture plus a couple `preact` goodies like [`h()`](https://preactjs.com/guide/differences-to-react#what-s-included-) and [components](https://preactjs.com/guide/lifecycle-methods). No JSX, only template strings via [hyperx](https://github.com/substack/hyperx). But you can use JSX if you want to. We even support almost all of the React ecosystem through [preact-compat](https://github.com/developit/preact-compat).
 
