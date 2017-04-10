@@ -1,5 +1,11 @@
 node_modules/
 coverage/
+dist/
 tmp/
+.sauce-credentials.json
+sauce_connect.log
 npm-debug.log*
+coverage.json
 .DS_Store
+*.swp
+.zuulrc

@@ -1,15 +1,28 @@
 {
-  "name": "example",
+  "name": "rooch-todomvc-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "start": "bankai start -p 8080 --open"
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "start": "bankai start --open",
+    "start-component": "bankai start component.js --open",
+    "build": "bankai build --optimize",
+    "test": "standard && npm run deps && node test.js"
   },
-  "keywords": [],
-  "author": "Yoshua Wuyts <yoshuawuyts@gmail.com>",
-  "license": "MIT",
+  "dependencies": {
+    "choo-expose": "^1.0.0",
+    "choo-log": "^6.0.0",
+    "choo-persist": "^3.0.0",
+    "microbounce": "^1.0.0",
+    "microframe": "^1.0.0",
+    "sheetify": "^6.0.1",
+    "todomvc-app-css": "^2.0.6",
+    "todomvc-common": "^1.0.3",
+    "xtend": "^4.0.1"
+  },
   "devDependencies": {
-    "bankai": "^3.2.0"
+    "bankai": "^5.4.0",
+    "dependency-check": "^2.8.0",
+    "standard": "^9.0.1"
   }
 }

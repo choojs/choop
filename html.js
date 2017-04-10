@@ -1,5 +1,4 @@
-const preact = require('preact')
-const hx = require('hyperx')
+var h = require('preact').h
+var hyperx = require('hyperx')
 
-const html = hx(preact.h)
-module.exports = html
+module.exports = hyperx(h)
