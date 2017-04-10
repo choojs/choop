@@ -1,7 +1,24 @@
 node_js:
-- "0.12"
-- "4"
+- '4'
+- '6'
 sudo: false
 language: node_js
-script: "npm run test:cov"
-after_script: "npm i -g codecov.io && cat ./coverage/lcov.info | codecov"
+env:
+  - CXX=g++-4.8
+notifications:
+  irc:
+    on_success: change
+    on_failure: always
+    use_notice: true
+    channels:
+      - "chat.freenode.net#choo"
+    template:
+      - "%{repository_slug} #%{build_number} %{result}: %{build_url}"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+script: npm run test
+# after_script: npm i -g codecov.io && cat ./coverage/lcov.info | codecov

@@ -1,156 +1,134 @@
-const createLocation = require('sheet-router/create-location')
-const onHistoryChange = require('sheet-router/history')
-const sheetRouter = require('sheet-router')
-const onHref = require('sheet-router/href')
-const walk = require('sheet-router/walk')
-const mutate = require('xtend/mutable')
-const barracks = require('barracks')
-const nanoraf = require('nanoraf')
-const assert = require('assert')
-const preact = require('preact')
-const xtend = require('xtend')
+var documentReady = require('document-ready')
+var nanorouter = require('nanorouter')
+var preact = require('preact')
+var renderToString = require('preact-render-to-string').render
+var nanoraf = require('nanoraf')
+var nanobus = require('nanobus')
+var assert = require('assert')
 
-module.exports = choo
+var onHistoryChange = require('./lib/history')
+var onHref = require('./lib/href')
 
-// framework for creating sturdy web applications
-// null -> fn
-function choo (opts) {
+module.exports = Rooch
+
+function Rooch (opts) {
   opts = opts || {}
 
-  const _store = start._store = barracks()
-  var _router = start._router = null
-  var _routerOpts = null
-  var _rootNode = null
-  var _parent = null
-  var _routes = null
-  var _frame = null
-
-  _store.use({ onStateChange: render })
-  _store.use(opts)
-
-  start.router = router
-  start.model = model
-  start.start = start
-  start.use = use
-
-  return start
-  // start the application
-  // (str?, obj?) -> DOMNode
-  function start (parent) {
-    _store.model(createLocationModel(opts))
-    const createSend = _store.start(opts)
-    _router = start._router = createRouter(_routerOpts, _routes, createSend)
-    const state = _store.state({state: {}})
-
-    _parent = parent
-    const tree = _router(state.location.pathname, state)
-    _rootNode = preact.render(tree, parent)
+  var routerOpts = {
+    default: opts.defaultRoute || '/404',
+    curry: true
   }
 
-  // update the DOM after every state mutation
-  // (obj, obj, obj, str, fn) -> null
-  function render (data, state, prev, name, createSend) {
-    if (!_frame) {
-      _frame = nanoraf(function (state, prev) {
-        const newTree = _router(state.location.pathname, state, prev)
-        _rootNode = preact.render(newTree, _parent, _rootNode)
+  var timingEnabled = opts.timing === undefined ? true : opts.timing
+  var hasWindow = typeof window !== 'undefined'
+  var hasPerformance = hasWindow && window.performance && window.performance.mark
+  var router = nanorouter(routerOpts)
+  var bus = nanobus()
+  var rerender = null
+  var tree = null
+  var root = null
+  var state = {}
+
+  return {
+    toString: toString,
+    use: register,
+    mount: mount,
+    route: route,
+    start: start
+  }
+
+  function route (route, handler) {
+    router.on(route, function (params) {
+      return function () {
+        state.params = params
+        return handler(state, emit)
+      }
+    })
+  }
+
+  function register (cb) {
+    cb(state, bus)
+  }
+
+  function start () {
+    tree = router(createLocation())
+    rerender = nanoraf(function () {
+      if (hasPerformance && timingEnabled) {
+        window.performance.mark('rooch:renderStart')
+      }
+      var newTree = router(createLocation())
+      tree = preact.render(newTree, root, tree)
+      if (hasPerformance && timingEnabled) {
+        window.performance.mark('rooch:renderEnd')
+        window.performance.measure('rooch:render', 'rooch:renderStart', 'rooch:renderEnd')
+      }
+    })
+
+    bus.on('render', rerender)
+
+    if (opts.history !== false) {
+      onHistoryChange(function (href) {
+        bus.emit('pushState')
       })
-    }
-    _frame(state, prev)
-  }
 
-  // register all routes on the router
-  // (str?, [fn|[fn]]) -> obj
-  function router (defaultRoute, routes) {
-    _routerOpts = defaultRoute
-    _routes = routes
-  }
+      bus.on('pushState', function (href) {
+        if (href) window.history.pushState({}, null, href)
+        bus.emit('render')
+        setTimeout(function () {
+          scrollIntoView()
+        }, 0)
+      })
 
-  // create a new model
-  // (str?, obj) -> null
-  function model (model) {
-    _store.model(model)
-  }
-
-  // register a plugin
-  // (obj) -> null
-  function use (hooks) {
-    assert.equal(typeof hooks, 'object', 'choo.use: hooks should be an object')
-    _store.use(hooks)
-  }
-
-  // create a new router with a custom `createRoute()` function
-  // (str?, obj) -> null
-  function createRouter (routerOpts, routes, createSend) {
-    var prev = {}
-    if (!routes) {
-      routes = routerOpts
-      routerOpts = {}
-    }
-    routerOpts = mutate({ thunk: 'match' }, routerOpts)
-    const router = sheetRouter(routerOpts, routes)
-    walk(router, wrap)
-
-    return router
-
-    function wrap (route, handler) {
-      const send = createSend('view: ' + route, true)
-      return function chooWrap (params) {
-        return function (state) {
-          const nwPrev = prev
-          const nwState = prev = xtend(state, { params: params })
-          if (opts.freeze !== false) Object.freeze(nwState)
-          return handler(nwState, nwPrev, send)
-        }
+      if (opts.href !== false) {
+        onHref(function (location) {
+          var href = location.href
+          var currHref = window.location.href
+          if (href === currHref) return
+          bus.emit('pushState', href)
+        })
       }
     }
+
+    documentReady(function () {
+      bus.emit('DOMContentLoaded')
+    })
+
+    return tree
+  }
+
+  function emit (eventName, data) {
+    bus.emit(eventName, data)
+  }
+
+  function mount (selector) {
+    var newTree = start()
+    documentReady(function () {
+      root = document.querySelector(selector)
+      assert.ok(root, 'could not query selector: ' + selector)
+      tree = preact.render(newTree, root)
+    })
+  }
+
+  function toString (location, _state) {
+    state = _state || {}
+    var html = router(location)
+    assert.equal()
+    return renderToString(html)
   }
 }
 
-// application location model
-// obj -> obj
-function createLocationModel (opts) {
-  return {
-    namespace: 'location',
-    state: createLocation(),
-    subscriptions: createSubscriptions(opts),
-    effects: { set: setLocation },
-    reducers: { update: updateLocation }
+function scrollIntoView () {
+  var hash = window.location.hash
+  if (hash) {
+    try {
+      var el = document.querySelector(hash)
+      if (el) el.scrollIntoView(true)
+    } catch (e) {}
   }
+}
 
-  function updateLocation (location, state) {
-    return location
-  }
-
-  // set a new location e.g. "/foo/bar#baz?beep=boop"
-  // (str, obj, fn, fn) -> null
-  function setLocation (patch, state, send, done) {
-    const newLocation = createLocation(state, patch)
-    if (opts.history !== false && newLocation.href !== state.href) {
-      window.history.pushState({}, null, newLocation.href)
-    }
-    send('location:update', newLocation, done)
-  }
-
-  function createSubscriptions (opts) {
-    const subs = {}
-
-    if (opts.history !== false) {
-      subs.handleHistory = function (send, done) {
-        onHistoryChange(function navigate (pathname) {
-          send('location:set', { pathname: pathname }, done)
-        })
-      }
-    }
-
-    if (opts.href !== false) {
-      subs.handleHref = function (send, done) {
-        onHref(function navigate (pathname) {
-          send('location:set', { pathname: pathname }, done)
-        })
-      }
-    }
-
-    return subs
-  }
+function createLocation () {
+  var pathname = window.location.pathname.replace(/\/$/, '')
+  var hash = window.location.hash.replace(/^#/, '/')
+  return pathname + hash
 }
