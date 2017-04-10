@@ -150,8 +150,8 @@ Maybe? If you've got no choice other than using `(p)react` this might be useful.
 Like [this](https://github.com/preact-compat/react):
 
 ```
-npm i -D preact preact-compat
-npm i -D preact-compat/react preact-compat/react-dom
+npm i -S preact preact-compat
+npm i -S preact-compat/react preact-compat/react-dom
 ```
 
 ### What's the size?
