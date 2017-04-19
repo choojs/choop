@@ -156,7 +156,7 @@ npm i -S preact-compat/react preact-compat/react-dom
 
 ### What's the size?
 
-Something like `9kb`
+Something like `7kb`
 
 ### What about choo?
 Yeah, what about me? (_drumroll_)
