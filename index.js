@@ -1,13 +1,12 @@
 var documentReady = require('document-ready')
+var nanohistory = require('nanohistory')
 var nanorouter = require('nanorouter')
 var preact = require('preact')
 var renderToString = require('preact-render-to-string').render
+var nanohistory = require('nanohistory')
 var nanoraf = require('nanoraf')
 var nanobus = require('nanobus')
 var assert = require('assert')
-
-var onHistoryChange = require('./lib/history')
-var onHref = require('./lib/href')
 
 module.exports = Rooch
 
@@ -67,7 +66,7 @@ function Rooch (opts) {
     bus.on('render', rerender)
 
     if (opts.history !== false) {
-      onHistoryChange(function (href) {
+      nanohistory(function (href) {
         bus.emit('pushState')
       })
 
@@ -80,7 +79,7 @@ function Rooch (opts) {
       })
 
       if (opts.href !== false) {
-        onHref(function (location) {
+        nanohref(function (location) {
           var href = location.href
           var currHref = window.location.href
           if (href === currHref) return
@@ -104,7 +103,7 @@ function Rooch (opts) {
     var newTree = start()
     documentReady(function () {
       root = document.querySelector(selector)
-      assert.ok(root, 'could not query selector: ' + selector)
+      assert.ok(root, 'rooch.mount: could not query selector: ' + selector)
       tree = preact.render(newTree, root)
     })
   }

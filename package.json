@@ -32,6 +32,8 @@
     "document-ready": "^2.0.1",
     "hyperx": "^2.3.0",
     "nanobus": "^3.0.0",
+    "nanohistory": "^1.0.0",
+    "nanohref": "^1.0.0",
     "nanoraf": "^3.0.0",
     "nanorouter": "^2.0.0",
     "preact": "^8.1.0",
