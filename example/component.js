@@ -23,9 +23,9 @@ class ClickMe extends Component {
 
 function view (state, emit) {
   return html`
-    <body>
+    <main>
       ${h(ClickMe)}
-    </body>
+    </main>
   `
 }
 
