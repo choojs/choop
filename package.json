@@ -1,6 +1,6 @@
 {
   "name": "rooch",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Choo x Preact",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,13 @@
     "deps": "dependency-check --entry ./html.js . && dependency-check . --extra --no-dev --entry ./html.js",
     "inspect": "browserify --full-paths index -g unassertify -g uglifyify | discify --open",
     "prepublish": "npm run build",
-    "start": "bankai start example --optimize",
+    "start": "bankai start example",
     "test": "standard && npm run deps && node test.js"
   },
   "repository": "yoshuawuyts/rooch",
   "keywords": [
+    "choo",
+    "preact",
     "client",
     "frontend",
     "framework",
@@ -30,27 +32,31 @@
   "license": "MIT",
   "dependencies": {
     "document-ready": "^2.0.1",
-    "hyperx": "^2.3.0",
-    "nanobus": "^3.1.0",
-    "nanohistory": "^1.0.0",
-    "nanohref": "^1.0.0",
+    "nanobus": "^4.2.0",
+    "nanohref": "^3.0.0",
+    "nanolocation": "^1.0.0",
+    "nanoquery": "^1.1.0",
     "nanoraf": "^3.0.0",
     "nanorouter": "^2.0.0",
-    "preact": "^8.1.0",
-    "preact-render-to-string": "^3.6.0"
+    "nanotiming": "^6.0.0",
+    "scroll-to-anchor": "^1.0.0",
+    "xtend": "^4.0.1",
+    "preact": "^8.2.6",
+    "preact-render-to-string": "^3.7.0",
+    "hyperx": "^2.3.2"
   },
   "devDependencies": {
-    "browserify": "^14.3.0",
-    "bundle-collapser": "^1.2.1",
-    "dependency-check": "^2.8.0",
+    "browserify": "^14.5.0",
+    "bundle-collapser": "^1.3.0",
+    "dependency-check": "^2.9.1",
     "discify": "^1.6.0",
     "node-zopfli": "^2.0.2",
     "pretty-bytes-cli": "^2.0.0",
-    "spok": "^0.8.1",
-    "standard": "^10.0.0",
-    "tape": "^4.6.3",
-    "uglifyify": "^3.0.4",
-    "uglifyjs": "^2.4.10",
-    "unassertify": "^2.0.4"
+    "spok": "^0.9.1",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0",
+    "uglifyify": "^4.0.5",
+    "uglifyjs": "^2.4.11",
+    "unassertify": "^2.1.0"
   }
 }
