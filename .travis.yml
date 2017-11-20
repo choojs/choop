@@ -1,19 +1,11 @@
 node_js:
-- '4'
 - '6'
+- '7'
+- '8'
 sudo: false
 language: node_js
 env:
   - CXX=g++-4.8
-notifications:
-  irc:
-    on_success: change
-    on_failure: always
-    use_notice: true
-    channels:
-      - "chat.freenode.net#choo"
-    template:
-      - "%{repository_slug} #%{build_number} %{result}: %{build_url}"
 addons:
   apt:
     sources:

@@ -9,3 +9,4 @@ coverage.json
 .DS_Store
 *.swp
 .zuulrc
+generate
