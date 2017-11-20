@@ -42,7 +42,7 @@ function Choo (opts) {
   this._createLocation = nanolocation
   this._loaded = false
   this._tree = null
-	this._treeref = null
+  this._treeref = null
 
   // properties that are part of the API
   this.router = nanorouter({ curry: true })
@@ -150,8 +150,6 @@ Choo.prototype.start = function () {
     var newTree = self.router(self.state.href)
     assert.ok(newTree, 'choo.render: no valid DOM node returned for location ' + self.state.href)
 
-    
-
     var morphTiming = nanotiming('choo.morph')
     self._treeref = preact.render(newTree, self._tree, self._treeref)
     morphTiming()
@@ -183,7 +181,6 @@ Choo.prototype.mount = function mount (selector) {
     }
 
     assert.ok(self._tree, 'choo.mount: could not query selector: ' + selector)
-    
 
     var morphTiming = nanotiming('choo.morph')
     self._treeref = preact.render(newTree, self._tree, self._tree.lastChild)
