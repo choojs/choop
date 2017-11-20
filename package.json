@@ -1,5 +1,5 @@
 {
-  "name": "rooch",
+  "name": "choop",
   "version": "3.0.0",
   "description": "Choo x Preact",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "start": "bankai start example",
     "test": "standard && npm run deps && node test.js"
   },
-  "repository": "yoshuawuyts/rooch",
+  "repository": "choojs/choop",
   "keywords": [
     "choo",
     "preact",
