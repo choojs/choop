@@ -58,10 +58,10 @@ app.mount('body')
 
 function mainView (state, emit) {
   return html`
-    <body>
+    <main>
       <h1>count is ${state.count}</h1>
       <button onclick=${onclick}>Increment</button>
-    </body>
+    </main>
   `
 
   function onclick () {
