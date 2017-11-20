@@ -80,6 +80,8 @@ function countStore (state, emitter) {
 
 See? Same same as `choo`!
 
+Only difference is `preact` will append our app to the element passed into `mount`. So instead of our main view returning `<body>` we return `<main>` (or whatever we want the root to be).
+
 ## Components
 
 You can create stateful components right out of the box with `rooch`:
