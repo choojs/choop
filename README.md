@@ -1,10 +1,18 @@
-# rooch
+<h1 align="center">rooch</h1>
 
-**Full on [choo](https://github.com/yoshuawuyts/choo) architecture on top of the tiny [preact](https://github.com/developit/preact) engine.**
+<div align="center">
+  🚂🚋🚋🚋🚋🚋 + ⚛
+</div>
+<div align="center">
+  <strong>Full on <a href="https://github.com/yoshuawuyts/choo">choo</a> architecture on top of the tiny <a href="https://github.com/developit/preact">preact</a> engine.</strong>
+</div>
+<div align="center">
+  Currently up-to-date with choo <code>6.6.0</code>
+</div>
 
 <br />
 
-<div>
+<div align="center">
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
     <img src="https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square"
@@ -14,16 +22,6 @@
   <a href="https://npmjs.org/package/rooch">
     <img src="https://img.shields.io/npm/v/rooch.svg?style=flat-square"
       alt="NPM version" />
-  </a>
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/yoshuawuyts/rooch">
-    <img src="https://img.shields.io/travis/yoshuawuyts/rooch/master.svg?style=flat-square"
-      alt="Build Status" />
-  </a>
-  <!-- Test Coverage -->
-  <a href="https://codecov.io/github/yoshuawuyts/rooch">
-    <img src="https://img.shields.io/codecov/c/github/yoshuawuyts/rooch/master.svg?style=flat-square"
-      alt="Test Coverage" />
   </a>
   <!-- Downloads -->
   <a href="https://npmjs.org/package/rooch">
@@ -49,10 +47,11 @@ Why is this useful? Sometimes you gotta use `react`, and the best thing to do in
 
 ```js
 var html = require('rooch/html')
+var devtools = require('choo-devtools')
 var rooch = require('rooch')
 
 var app = rooch()
-app.use(logger)
+app.use(devtools())
 app.use(countStore)
 app.route('/', mainView)
 app.mount('body')
@@ -70,12 +69,6 @@ function mainView (state, emit) {
   }
 }
 
-function logger (state, emitter) {
-  emitter.on('*', function (messageName, data) {
-    console.log('event', messageName, data)
-  })
-}
-
 function countStore (state, emitter) {
   state.count = 0
   emitter.on('increment', function (count) {
@@ -89,10 +82,7 @@ See? Same same as `choo`!
 
 ## Components
 
-Everything in `rooch` _should_ be the same, but things can be a _little_ different for components:
-
-- In `choo`, stateful components are created using something like [nanocomponent](https://github.com/yoshuawuyts/nanocomponent)
-- In `rooch`, stateful components can be created by [extending the preact `Component` class](https://preactjs.com/guide/extending-component). Some additional aliases are provided for this, `rooch/h` and `rooch/component`
+You can create stateful components right out of the box with `rooch`:
 
 ```js
 var Component = require('rooch/component')
@@ -156,7 +146,7 @@ npm i -S preact-compat/react preact-compat/react-dom
 
 ### What's the size?
 
-Something like `7kb`
+Something like `9 kB`
 
 ### What about choo?
 Yeah, what about me? (_drumroll_)
