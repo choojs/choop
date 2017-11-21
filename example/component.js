@@ -1,4 +1,4 @@
-var rooch = require('..')
+var choop = require('..')
 var html = require('../html')
 var h = require('../h')
 var Component = require('../component')
@@ -29,7 +29,7 @@ function view (state, emit) {
   `
 }
 
-var app = rooch()
+var app = choop()
 
 app.route('/', view)
 
