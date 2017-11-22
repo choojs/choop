@@ -24,10 +24,10 @@
       alt="NPM version" />
   </a>
   <!-- Downloads -->
-  <a href="https://npmjs.org/package/choop">
+  <!--<a href="https://npmjs.org/package/choop">
     <img src="https://img.shields.io/npm/dm/choop.svg?style=flat-square"
       alt="Downloads" />
-  </a>
+  </a>-->
   <!-- Standard -->
   <a href="https://standardjs.com">
     <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square"
@@ -37,13 +37,11 @@
 
 <br/>
 
-Ever wondered what would happen if `(p)react` and [choo](https://github.com/yoshuawuyts/choo) got a baby?
+Ever wondered what would happen if [`preact`](https://github.com/developit/preact) and [`choo`](https://github.com/yoshuawuyts/choo) got a baby?
 
-Welp, wonder no longer - here's the answer. Full on [choo](https://github.com/yoshuawuyts/choo) architecture plus a couple `preact` goodies like [`h()`](https://preactjs.com/guide/differences-to-react#what-s-included-) and [components](https://preactjs.com/guide/lifecycle-methods). No JSX, only template strings via [hyperx](https://github.com/substack/hyperx). But you can use JSX if you want to. We even support almost all of the React ecosystem through [preact-compat](https://github.com/developit/preact-compat).
+Welp, wonder no longer - here's the answer. Full on `choo` architecture plus a couple `preact` goodies like [`h()`](https://preactjs.com/guide/differences-to-react#what-s-included-) and [components](https://preactjs.com/guide/lifecycle-methods). No JSX, only template strings via [hyperx](https://github.com/substack/hyperx). But you can use JSX if you want to. We even get almost all of the React ecosystem through [preact-compat](https://github.com/developit/preact-compat) 🎉🎉🎉🎉
 
-🎉🎉🎉🎉
-
-Why is this useful? Sometimes you gotta use `react`, and the best thing to do in that case is to jump on the `preact` train, grab a bag of architecture and go to town. This might not be for me, but perhaps it's useful for you. Here you go! 🎁
+## Example
 
 ```js
 var html = require('choop/html')
@@ -135,8 +133,12 @@ h(MyComponent, { someData: 'beep' })
 You can use `props` or an additional constructor function to pass `emit` into your components.
 
 ## FAQ
+
 ### Should I use this?
-Maybe? If you've got no choice other than using `(p)react` this might be useful.
+Sometimes you gotta use `react`, and the best thing to do in that case might be to jump on the `preact` train, grab a bag of architecture and go to town. This might not be for me, but perhaps it's useful for you. Here you go! 🎁
+
+### What's the real difference here?
+[`nanomorph`](https://github.com/choojs/nanomorph) is replaced by [`preact`](https://github.com/developit/preact)
 
 ### How do I run react widgets in choop?
 Like [this](https://github.com/preact-compat/react):
