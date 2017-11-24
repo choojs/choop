@@ -16,7 +16,7 @@
     "todomvc-common": "^1.0.3"
   },
   "devDependencies": {
-    "bankai": "^9.0.0-rc6",
+    "bankai": "^9.0.1",
     "standard": "^9.0.1"
   }
 }
