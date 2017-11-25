@@ -132,6 +132,14 @@ h(MyComponent, { someData: 'beep' })
 
 You can use `props` or an additional constructor function to pass `emit` into your components.
 
+## More Examples
+
+- **Basic**: https://esnextb.in/?gist=f9f339a9d108f156aa885bca96723d36
+- **Using JSX**: https://esnextb.in/?gist=84fd53fc0ea53240da89bef9573c9644
+- **Rendering `choop` (`preact`) component**: https://esnextb.in/?gist=28005d951a7347fb652eab669c5ffa1e
+- **Rendering `Nanocomponent`**: https://esnextb.in/?gist=01daeea0b216632edf3f0e27b8f0b89a
+- **Rendering `React` component**: https://choop-react.glitch.me/ ([source](https://glitch.com/edit/#!/choop-react?path=public/client.js:1:0))
+
 ## FAQ
 
 ### Should I use this?
