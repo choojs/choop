@@ -1,6 +1,6 @@
 {
   "name": "choop",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Choo x Preact",
   "main": "index.js",
   "scripts": {
@@ -31,19 +31,19 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "preact": "^8.2.9",
+    "hyperx": "^2.4.0",
+    "preact-render-to-string": "^3.7.0",
     "document-ready": "^2.0.1",
     "nanobus": "^4.2.0",
     "nanohref": "^3.0.0",
     "nanolocation": "^1.0.0",
     "nanoquery": "^1.1.0",
     "nanoraf": "^3.0.0",
-    "nanorouter": "^2.0.0",
-    "nanotiming": "^6.0.0",
+    "nanorouter": "^3.0.1",
+    "nanotiming": "^7.0.0",
     "scroll-to-anchor": "^1.0.0",
-    "xtend": "^4.0.1",
-    "preact": "^8.2.6",
-    "preact-render-to-string": "^3.7.0",
-    "hyperx": "^2.3.2"
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
