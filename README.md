@@ -7,7 +7,7 @@
   <strong>Full on <a href="https://github.com/yoshuawuyts/choo">choo</a> architecture on top of the tiny <a href="https://github.com/developit/preact">preact</a> engine.</strong>
 </div>
 <div align="center">
-  Currently up-to-date with choo <code>6.6.0</code>
+  Currently up-to-date with choo <code>6.11.0</code>
 </div>
 
 <br />
@@ -131,6 +131,10 @@ h(MyComponent, { someData: 'beep' })
 ```
 
 You can use `props` or an additional constructor function to pass `emit` into your components.
+
+**`state.cache`**
+
+`choo` version `6.11.0` introduced a `state.cache` helper for managing `nanocomponent` instances. This is not included in `choop` since component instance management is taken care of by `preact`.
 
 ## More Examples
 
