@@ -138,7 +138,7 @@ function TodoItem (todo, emit) {
   }
 
   function handleEditKeydown (e) {
-    if (e.keyCode === 13) update(e)              // Enter
+    if (e.keyCode === 13) update(e) // Enter
     else if (e.code === 27) emit('todos:unedit') // Escape
   }
 

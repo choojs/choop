@@ -7,7 +7,7 @@
   <strong>Full on <a href="https://github.com/yoshuawuyts/choo">choo</a> architecture on top of the tiny <a href="https://github.com/developit/preact">preact</a> engine.</strong>
 </div>
 <div align="center">
-  Currently up-to-date with choo <code>6.11.0</code>
+  Currently up-to-date with choo <code>6.13.1</code>
 </div>
 
 <br />
@@ -162,7 +162,7 @@ npm i -S preact-compat/react preact-compat/react-dom
 
 ### What's the size?
 
-Something like `9 kB`
+Something like `8.7 kB`
 
 ### What about choo?
 Yeah, what about me? (_drumroll_)

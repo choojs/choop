@@ -1,6 +1,5 @@
 var scrollToAnchor = require('scroll-to-anchor')
 var documentReady = require('document-ready')
-var nanolocation = require('nanolocation')
 var nanotiming = require('nanotiming')
 var nanorouter = require('nanorouter')
 var preact = require('preact')
@@ -38,8 +37,8 @@ function Choo (opts) {
   // properties for internal use only
   this._historyEnabled = opts.history === undefined ? true : opts.history
   this._hrefEnabled = opts.href === undefined ? true : opts.href
+  this._hashEnabled = opts.hash === undefined ? true : opts.hash
   this._hasWindow = typeof window !== 'undefined'
-  this._createLocation = nanolocation
   this._loaded = false
   this._stores = []
   this._tree = null
@@ -127,8 +126,11 @@ Choo.prototype.start = function () {
     if (self._hrefEnabled) {
       nanohref(function (location) {
         var href = location.href
-        var currHref = window.location.href
-        if (href === currHref) return
+        var hash = location.hash
+        if (href === window.location.href) {
+          if (!self._hashEnabled && hash) scrollToAnchor(hash)
+          return
+        }
         self.emitter.emit(self._events.PUSHSTATE, href)
       })
     }
@@ -214,10 +216,12 @@ Choo.prototype.toString = function (location, state) {
 Choo.prototype._matchRoute = function (locationOverride) {
   var location, queryString
   if (locationOverride) {
-    location = locationOverride.replace(/\?.+$/, '')
+    location = locationOverride.replace(/\?.+$/, '').replace(/\/$/, '')
+    if (!this._hashEnabled) location = location.replace(/#.+$/, '')
     queryString = locationOverride
   } else {
-    location = this._createLocation()
+    location = window.location.pathname.replace(/\/$/, '')
+    if (this._hashEnabled) location += window.location.hash.replace(/^#/, '/')
     queryString = window.location.search
   }
   var matched = this.router.match(location)
