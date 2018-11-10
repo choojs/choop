@@ -2,8 +2,9 @@ var scrollToAnchor = require('scroll-to-anchor')
 var documentReady = require('document-ready')
 var nanotiming = require('nanotiming')
 var nanorouter = require('nanorouter')
-var preact = require('preact')
-var rendertostring = require('preact-render-to-string').render
+var React = require('react')
+var ReactDOM = require('react-dom')
+// var ReactDOMServer = require('react-dom/server')
 var nanoquery = require('nanoquery')
 var nanohref = require('nanohref')
 var nanoraf = require('nanoraf')
@@ -150,7 +151,8 @@ Choo.prototype.start = function () {
     assert.ok(newTree, 'choo.render: no valid DOM node returned for location ' + self.state.href)
 
     var morphTiming = nanotiming('choo.morph')
-    self._treeref = preact.render(newTree, self._tree, self._treeref)
+    // self._treeref = preact.render(newTree, self._tree, self._treeref)
+    self._treeref = ReactDOM.render(newTree, self._tree)
     morphTiming()
 
     renderTiming()
@@ -187,7 +189,10 @@ Choo.prototype.mount = function mount (selector) {
     assert.ok(self._tree, 'choo.mount: could not query selector: ' + selector)
 
     var morphTiming = nanotiming('choo.morph')
-    self._treeref = preact.render(newTree, self._tree, self._tree.lastChild)
+    // self._treeref = preact.render(newTree, self._tree, self._tree.lastChild)
+
+    self._treeref = ReactDOM.render(newTree, self._tree)
+
     morphTiming()
 
     renderTiming()
@@ -210,7 +215,8 @@ Choo.prototype.toString = function (location, state) {
   var html = this._prerender(this.state)
   assert.ok(html, 'choo.toString: no valid value returned for the route ' + location)
   assert(!Array.isArray(html), 'choo.toString: return value was an array for the route ' + location)
-  return typeof html.outerHTML === 'string' ? html.outerHTML : rendertostring(html)
+  // return typeof html.outerHTML === 'string' ? html.outerHTML : ReactDOMServer.renderToString(html)
+  return typeof html.outerHTML === 'string' ? html.outerHTML : ''
 }
 
 Choo.prototype._matchRoute = function (locationOverride) {

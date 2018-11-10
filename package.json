@@ -41,6 +41,8 @@
     "nanotiming": "^7.3.1",
     "preact": "^8.3.1",
     "preact-render-to-string": "^4.1.0",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
     "scroll-to-anchor": "^1.1.0",
     "xtend": "^4.0.1"
   },

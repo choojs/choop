@@ -1,7 +1,5 @@
 var choop = require('..')
-var html = require('../html')
-var h = require('../h')
-var Component = require('../component')
+var { Component } = require('react')
 
 class ClickMe extends Component {
   constructor () {
@@ -11,22 +9,19 @@ class ClickMe extends Component {
       this.setState({ n: this.state.n + 1 })
     }
   }
+
   render (props, state) {
-    return html`
-      <div>
-        <h1>clicked ${state.n} times</h1>
-        <button onClick=${this.handleClick}>click me!</button>
-      </div>
-    `
+    return <div>
+      <h1>clicked ${state.n} times</h1>
+      <button onClick=${this.handleClick}>click me!</button>
+    </div>
   }
 }
 
 function view (state, emit) {
-  return html`
-    <main>
-      ${h(ClickMe)}
-    </main>
-  `
+  return <main>
+    <ClickMe />
+  </main>
 }
 
 var app = choop()

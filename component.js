@@ -1,3 +1,3 @@
 function Component () {}
-Component.prototype = Object.create(require('preact').Component.prototype)
+Component.prototype = Object.create(require('react').Component.prototype)
 module.exports = Component

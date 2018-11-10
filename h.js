@@ -1,1 +1,1 @@
-module.exports = require('preact').h
+module.exports = require('react').createElement

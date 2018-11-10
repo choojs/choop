@@ -1,0 +1,19 @@
+{
+  "name": "example-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.jsx --live --pushstate -- -t [ babelify --presets [ @babel/preset-react ] ]"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babelify": "^10.0.0",
+    "budo": "^11.5.0"
+  }
+}
