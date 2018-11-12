@@ -1,3 +1,3 @@
-function Component () {}
-Component.prototype = Object.create(require('preact').Component.prototype)
+var Preact = require('preact')
+class Component extends Preact.Component {}
 module.exports = Component
