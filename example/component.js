@@ -4,8 +4,8 @@ var h = require('../h')
 var Component = require('../component')
 
 class ClickMe extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = { n: 0 }
     this.handleClick = () => {
       this.setState({ n: this.state.n + 1 })
